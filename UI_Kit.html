@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UI Kit — every style, button and control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08060d;--surf:#121019;--gold:#d4af37;--goldlt:#f0d68a;--champ:#f8ecd4;--dim:#a79c8f;--dim2:#7d7367;
+--line:rgba(212,175,55,.2);--soft:rgba(255,255,255,.08);--ok:#4fbf95;--rose:#e2a7ab;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+body{background:var(--bg);color:#f5f0e7;font-family:var(--sans);font-weight:300;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:38px 0 80px}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);font-weight:400}
+h2{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--champ);margin:36px 0 3px}
+h2 span{font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:5px}
+.note{font-size:12.5px;color:var(--dim2);margin-bottom:14px;max-width:760px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.demo{border:1px solid var(--soft);border-radius:14px;padding:16px;background:rgba(255,255,255,.02)}
+.demo b{display:block;font-size:12.5px;color:var(--champ);font-weight:500;margin-bottom:3px}
+.demo small{display:block;font-size:11px;color:var(--dim2);line-height:1.5;margin-top:8px}
+/* ---- UI styles ---- */
+.ui-box{height:96px;border-radius:12px;display:grid;place-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.st-liquid{background:linear-gradient(150deg,rgba(255,255,255,.18),rgba(255,255,255,.04));
+backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.28);color:var(--goldlt);
+box-shadow:0 22px 40px -22px #000,inset 0 1px 0 rgba(255,255,255,.5)}
+.st-glass{background:rgba(255,255,255,.09);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);color:var(--champ)}
+.st-neu{background:#1b1723;color:var(--dim);box-shadow:8px 8px 18px #050408,-8px -8px 18px #2a2436}
+.st-clay{background:linear-gradient(150deg,#2c2438,#1d1826);color:var(--champ);border-radius:22px;
+box-shadow:inset -4px -4px 10px rgba(0,0,0,.5),inset 4px 4px 10px rgba(255,255,255,.1),0 18px 30px -18px #000}
+.st-brut{background:#f2e14c;color:#111;border:3px solid #111;border-radius:0;font-weight:600;box-shadow:6px 6px 0 #111}
+.st-min{background:#fbfaf7;color:#222;border:1px solid #e6e1d6;border-radius:4px;letter-spacing:.2em}
+.st-dark{background:linear-gradient(150deg,#16121d,#0a0810);color:var(--goldlt);border:1px solid var(--line)}
+.st-mesh{background:radial-gradient(circle at 20% 20%,#7b4bff55,transparent 55%),
+radial-gradient(circle at 80% 30%,#d4af3755,transparent 55%),radial-gradient(circle at 50% 85%,#4fbf9555,transparent 55%),#151119;
+color:var(--champ);border:1px solid var(--soft)}
+.st-soft{background:#f4f1ea;color:#4a453c;border-radius:18px;box-shadow:0 10px 24px -14px rgba(0,0,0,.5)}
+.st-retro{background:#f6ecd8;color:#7a4f16;border:1px solid #d9c49a;font-family:var(--serif);font-size:15px;letter-spacing:.1em}
+/* ---- buttons ---- */
+.b{display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:999px;font-size:10.5px;
+letter-spacing:.13em;text-transform:uppercase;font-family:inherit;cursor:pointer;border:1px solid transparent;transition:.3s}
+.b:hover{transform:translateY(-2px)}
+.b-gold{background:linear-gradient(115deg,#f2d98a,#d4af37 45%,#a9822a);color:#16110a;box-shadow:0 14px 28px -16px rgba(212,175,55,.9)}
+.b-line{border-color:var(--line);color:var(--champ);background:transparent}
+.b-ghost{color:var(--dim);background:transparent}
+.b-link{background:none;color:var(--goldlt);text-decoration:underline;padding:6px 2px}
+.b-pill{background:rgba(212,175,55,.16);color:var(--goldlt);border-color:var(--line)}
+.b-icon{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;background:rgba(255,255,255,.07);color:var(--champ);border-color:var(--soft)}
+.b-fab{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%;font-size:20px;
+background:linear-gradient(120deg,#f2d98a,#d4af37);color:#16110a;box-shadow:0 16px 30px -14px rgba(212,175,55,.9)}
+.b-split{background:#1a1622;color:var(--champ);border-color:var(--soft);border-radius:10px;padding:0;overflow:hidden}
+.b-split span{padding:11px 16px}.b-split span+span{border-left:1px solid var(--soft)}
+.b-load{background:rgba(255,255,255,.08);color:var(--dim);border-color:var(--soft);cursor:wait}
+.b-load i{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,.25);border-top-color:var(--goldlt);animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.b:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.b-danger{background:rgba(226,167,171,.16);color:#f0b9bd;border-color:rgba(226,167,171,.4)}
+.b-ok{background:rgba(79,191,149,.16);color:#7fe0bb;border-color:rgba(79,191,149,.4)}
+.b-3d{background:linear-gradient(#2a2436,#1a1622);color:var(--champ);border-color:var(--soft);
+box-shadow:0 5px 0 #0b0910,0 12px 20px -12px #000}
+.b-3d:active{transform:translateY(4px);box-shadow:0 1px 0 #0b0910}
+.b-social{background:#fff;color:#111;border-radius:8px}
+.b-sq{border-radius:8px}
+/* ---- inputs ---- */
+.i{padding:11px 13px;border-radius:9px;border:1px solid var(--soft);background:rgba(255,255,255,.05);
+color:#f5f0e7;font-family:inherit;font-size:13px;outline:none;min-width:170px;transition:.3s}
+.i:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.16)}
+.sel{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);
+background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
+/* ---- switches / sliders ---- */
+.sw{width:46px;height:26px;border-radius:999px;background:rgba(255,255,255,.12);position:relative;cursor:pointer;transition:.3s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.3s}
+.sw.on{background:linear-gradient(120deg,var(--gold),#a9822a)}
+.sw.on::after{left:23px}
+.slider{width:220px;-webkit-appearance:none;height:4px;border-radius:4px;background:rgba(255,255,255,.14);outline:none}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+background:linear-gradient(120deg,#f2d98a,#d4af37);cursor:pointer;box-shadow:0 0 0 4px rgba(212,175,55,.18)}
+.prog{width:220px;height:6px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+.prog i{display:block;height:100%;width:64%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--rose))}
+.stepper{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--soft);border-radius:999px;padding:5px 12px;font-size:13px}
+.stepper b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);cursor:pointer}
+/* ---- chips/badges/toast ---- */
+.chip{font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;border:1px solid var(--soft);color:var(--dim)}
+.chip.on{background:rgba(212,175,55,.16);border-color:var(--line);color:var(--goldlt)}
+.badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:5px;
+background:rgba(212,175,55,.16);color:var(--goldlt)}
+.badge.ok{background:rgba(79,191,149,.18);color:#63c9a9}
+.badge.rose{background:rgba(226,167,171,.18);color:var(--rose)}
+.badge.dim{background:rgba(255,255,255,.07);color:var(--dim2)}
+.toast{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;font-size:11.5px;
+background:rgba(255,255,255,.07);border:1px solid var(--soft);color:var(--champ)}
+.toast.ok{border-color:rgba(79,191,149,.4);background:rgba(79,191,149,.12)}
+.toast.warn{border-color:rgba(226,167,171,.4);background:rgba(226,167,171,.12)}
+.spin{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.15);border-top-color:var(--gold);animation:sp 1s linear infinite}
+.dots{display:flex;gap:5px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:bn 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bn{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-6px);opacity:1}}
+.skel{height:11px;border-radius:6px;width:180px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.15),rgba(255,255,255,.06));
+background-size:200% 100%;animation:sk 1.4s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+table{width:100%;border-collapse:collapse;font-size:12px;border:1px solid var(--soft);border-radius:12px;overflow:hidden}
+th{text-align:left;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);padding:10px;background:rgba(255,255,255,.04)}
+td{padding:10px;border-top:1px solid var(--soft)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:16px;border:1px solid var(--soft);
+border-radius:14px;background:rgba(255,255,255,.02);margin-bottom:10px}
+.lbl{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2);width:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>UI Kit</h1>
+  <p class="note">Every style and component that exists, with its name and what it does. Tell me the name and I will use it in any package.</p>
+
+  <h2><span>01</span>UI styles</h2>
+  <p class="note">Ten different visual languages. Starter uses Minimal, Business uses Dark Luxe with animation, Pro uses Liquid Glass.</p>
+  <div class="grid g2"><div class="demo"><div class="ui-box st-liquid">Liquid Glass</div><b>Liquid Glass</b><small>Frosted blur with a bright top edge and deep shadow — looks like real glass. Used in the Pro package.</small></div><div class="demo"><div class="ui-box st-glass">Glassmorphism</div><b>Glassmorphism</b><small>Semi-transparent panel over a colourful background. Cheaper version of liquid glass.</small></div><div class="demo"><div class="ui-box st-neu">Neumorphism</div><b>Neumorphism</b><small>Soft extruded shapes — the element looks pressed out of the background. Subtle, works on light or grey.</small></div><div class="demo"><div class="ui-box st-clay">Claymorphism</div><b>Claymorphism</b><small>Puffy, rounded, inner shadow — soft 3D like clay. Friendly and modern.</small></div><div class="demo"><div class="ui-box st-brut">Brutalism</div><b>Brutalism</b><small>Hard borders, no rounding, bright colour, hard shadow. Bold and loud.</small></div><div class="demo"><div class="ui-box st-min">Minimal / Swiss</div><b>Minimal / Swiss</b><small>White space, thin type, no decoration. Fastest and cleanest.</small></div><div class="demo"><div class="ui-box st-dark">Dark Luxe</div><b>Dark Luxe</b><small>Deep background with gold accents — the jewellery theme used across these demos.</small></div><div class="demo"><div class="ui-box st-mesh">Gradient Mesh</div><b>Gradient Mesh</b><small>Multiple blurred colour blobs behind content. Modern and colourful.</small></div><div class="demo"><div class="ui-box st-soft">Soft UI</div><b>Soft UI</b><small>Light background, gentle shadow, pastel — calm and premium.</small></div><div class="demo"><div class="ui-box st-retro">Retro / Vintage</div><b>Retro / Vintage</b><small>Cream paper, serif type, thin borders. Good for traditional jewellery.</small></div></div>
+
+  <h2><span>02</span>Buttons — every type</h2>
+  <p class="note">Each button has one job. Using the wrong type confuses the customer.</p>
+  <div class="grid g3"><div class="demo"><button class="b b-gold">Primary</button><small>The main action on a page — Add to cart, Place order.</small></div><div class="demo"><button class="b b-line">Outline</button><small>Second action next to the primary — View details.</small></div><div class="demo"><button class="b b-ghost">Ghost</button><small>Quiet action, no background — Cancel, Skip.</small></div><div class="demo"><button class="b b-link">Link</button><small>Inline text action — Forgot password, Terms.</small></div><div class="demo"><button class="b b-pill">Pill / Tag</button><small>Small rounded action or filter — All, Earrings.</small></div><div class="demo"><button class="b b-icon">Icon button</button><small>One icon only — search, heart, menu. Saves space.</small></div><div class="demo"><button class="b b-fab">Floating (FAB)</button><small>Round button fixed on screen — WhatsApp chat, Add.</small></div><div class="demo"><button class="b b-split">Split button</button><small>Main action + a dropdown for more options.</small></div><div class="demo"><button class="b b-load"><i></i> Loading</button><small>Shows a spinner while saving — stops double clicks.</small></div><div class="demo"><button class="b b-sq">Square / Soft</button><small>Small radius button for dashboards and forms.</small></div><div class="demo"><button class="b b-danger">Danger</button><small>Delete, cancel order — red tone so nobody taps by mistake.</small></div><div class="demo"><button class="b b-ok">Success</button><small>Confirm, mark paid — green tone.</small></div><div class="demo"><button class="b b-3d">3D press</button><small>Raised button that presses down on click.</small></div><div class="demo"><button class="b b-social">Social / WhatsApp</button><small>Brand-coloured button — Continue with WhatsApp.</small></div></div>
+
+  <h2><span>03</span>Inputs &amp; controls</h2>
+  <p class="note">What each field is for.</p>
+  <div class="grid g3"><div class="demo"><b>Text input</b><small>Name, city, address — the basic field.</small></div><div class="demo"><b>Password</b><small>Hidden characters with an eye toggle.</small></div><div class="demo"><b>Search</b><small>Filters the product list as you type.</small></div><div class="demo"><b>Number / Price</b><small>Only digits, used for price and stock.</small></div><div class="demo"><b>Textarea</b><small>Multi-line — address, notes.</small></div><div class="demo"><b>Dropdown (select)</b><small>Pick one from a list — category, state, courier.</small></div><div class="demo"><b>Multi-select chips</b><small>Pick several — sizes, colours, categories.</small></div><div class="demo"><b>Date picker</b><small>Delivery date, order date.</small></div><div class="demo"><b>Checkbox</b><small>Tick many — 'same as billing address'.</small></div><div class="demo"><b>Radio</b><small>Pick exactly one — payment method.</small></div><div class="demo"><b>Switch (toggle)</b><small>On/off — 'out of stock', 'show on site'.</small></div><div class="demo"><b>Range slider</b><small>Price filter from–to.</small></div><div class="demo"><b>Stepper</b><small>Quantity + and −.</small></div><div class="demo"><b>File upload</b><small>Product photos and video.</small></div><div class="demo"><b>OTP boxes</b><small>4 boxes that auto-advance while typing.</small></div></div>
+
+  <h2><span>04</span>Live samples</h2>
+  <div class="row"><span class="lbl">Text · dropdown · password</span>
+    <input class="i" placeholder="Your name">
+    <select class="i sel"><option>Choose category</option><option>Earrings</option><option>Gift box</option></select>
+    <input class="i" type="password" placeholder="Password">
+  </div>
+  <div class="row"><span class="lbl">Switch · slider · progress · stepper</span>
+    <div class="sw on"></div><div class="sw"></div>
+    <input class="slider" type="range" value="60">
+    <div class="prog"><i></i></div>
+    <div class="stepper"><b>−</b> 2 <b>+</b></div>
+  </div>
+  <div class="row"><span class="lbl">Chips · badges</span>
+    <span class="chip on">All</span><span class="chip">Earrings</span><span class="chip">Gift box</span>
+    <span class="badge">New</span><span class="badge ok">Paid</span><span class="badge rose">Pending</span><span class="badge dim">Draft</span>
+  </div>
+  <div class="row"><span class="lbl">Toasts · loaders</span>
+    <span class="toast">Saved</span><span class="toast ok">✓ Payment verified</span><span class="toast warn">! Enter all 4 digits</span>
+    <div class="spin"></div><div class="dots"><i></i><i></i><i></i></div><div class="skel"></div>
+  </div>
+  <table>
+    <tr><th>Order</th><th>Customer</th><th>Status</th><th>Amount</th></tr>
+    <tr><td>#1042</td><td>Customer A</td><td><span class="badge ok">Delivered</span></td><td>₹ —</td></tr>
+    <tr><td>#1043</td><td>Customer B</td><td><span class="badge">Ready to ship</span></td><td>₹ —</td></tr>
+  </table>
+</div></body></html>
