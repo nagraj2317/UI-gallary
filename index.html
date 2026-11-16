@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UI Gallery — packages, demos and live sites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07060c;--gold:#d4af37;--goldlt:#f0d68a;--champ:#f8ecd4;--dim:#a79c8f;--dim2:#7d7367;
+--line:rgba(212,175,55,.22);--soft:rgba(255,255,255,.09);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+body{background:var(--bg);color:#f5f0e7;font-family:var(--sans);font-weight:300;line-height:1.6;
+background-image:radial-gradient(760px 520px at 84% -8%,rgba(212,175,55,.16),transparent 62%),
+radial-gradient(640px 480px at 2% 14%,rgba(226,167,171,.09),transparent 66%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1}
+.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:52px 0 70px}
+.eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+header h1{font-size:clamp(34px,6vw,60px);color:var(--champ);margin:14px 0 10px}
+header h1 em{font-style:italic;color:var(--goldlt)}
+header p{color:var(--dim);max-width:620px;font-size:15px}
+h2{font-size:clamp(22px,3.4vw,30px);color:var(--champ);margin:44px 0 4px}
+h2 span{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+color:var(--gold);margin-bottom:6px}
+.sub{color:var(--dim2);font-size:12.5px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:18px;border-radius:16px;
+background:linear-gradient(150deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);transition:.35s;min-height:150px}
+.card:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:0 26px 50px -30px #000}
+.card b{display:block;font-family:var(--serif);font-size:18px;color:var(--champ);font-weight:500;margin-bottom:4px}
+.card small{display:block;font-size:12px;color:var(--dim2);line-height:1.5}
+.card .meta{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2)}
+.card .open{display:inline-flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+color:var(--goldlt);border:1px solid var(--line);border-radius:999px;padding:9px 16px;align-self:flex-start;
+transition:.3s}
+.card:hover .open{background:rgba(212,175,55,.18)}
+.tag{display:inline-block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;
+border-radius:5px;background:rgba(212,175,55,.16);color:var(--goldlt);margin-bottom:8px}
+.tag.new{background:rgba(79,191,149,.18);color:#7fe0bb}
+footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--soft);font-size:11.5px;color:var(--dim2);
+display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Everything in one place</div>
+    <h1>UI gallery<br><em>and live sites.</em></h1>
+    <p>Every package, demo, UI kit and shop site built so far. Tap any card to open it — each one works on its own, no installation.</p>
+  </header>
+
+  <h2><span>01</span>Packages</h2>
+  <p class="sub">Prices, features, support and the payment rules.</p>
+  <div class="grid">
+    <a class="card" href="Website_Packages.html">
+      <div><span class="tag">Sales page</span><b>Website Packages</b>
+      <small>Starter, Business and Professional — features, support, delivery time and the 12 payment and cancellation rules.</small></div>
+      <span class="meta">HTML · open</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Website_Packages_and_UI_Guide.pdf">
+      <div><span class="tag">PDF</span><b>Packages &amp; UI Guide</b>
+      <small>The same packages plus the full UI catalogue, ready to send to a client on WhatsApp.</small></div>
+      <span class="meta">PDF · 6 pages</span><span class="open">Download →</span>
+    </a>
+  </div>
+
+  <h2><span>02</span>Package demos</h2>
+  <p class="sub">Three levels of design — white and plain, dark and animated, premium 3D.</p>
+  <div class="grid">
+    <a class="card" href="Starter_Demo.html">
+      <div><span class="tag">Starter</span><b>Starter demo</b>
+      <small>White theme, no animation. Customer page, login, create account and an admin with orders, packing and inventory.</small></div>
+      <span class="meta">Light · simple</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Business_Demo.html">
+      <div><span class="tag">Business</span><b>Business demo</b>
+      <small>Dark gold, animated everywhere. Three languages, OTP signup, payments, labels and coupons in the admin.</small></div>
+      <span class="meta">2D · animated</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Pro_Demo.html">
+      <div><span class="tag new">Pro</span><b>Pro demo</b>
+      <small>Real 3D — rotating cube, 3D carousel, liquid glass, tilt cards and the animated OTP login.</small></div>
+      <span class="meta">3D · premium</span><span class="open">Open →</span>
+    </a>
+  </div>
+
+  <h2><span>03</span>UI kits</h2>
+  <p class="sub">Pick a style, button or control and use it in any site.</p>
+  <div class="grid">
+    <a class="card" href="UI_Kit.html">
+      <div><span class="tag">Reference</span><b>UI Kit</b>
+      <small>10 UI styles, 14 button types and 15 inputs — each with its name and what it does.</small></div>
+      <span class="meta">Small · fast</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Pro_Theme_UI.html">
+      <div><span class="tag">Theme</span><b>Pro Theme UI</b>
+      <small>The main Pro blocks — hero, cards, login with OTP, admin dashboard and every component, with 82 sample images.</small></div>
+      <span class="meta">5 MB · images inside</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Pro_UI_-_Main_Designs.html">
+      <div><span class="tag">Collection</span><b>Pro UI — Main Designs</b>
+      <small>4,560 ready-made screen designs (PR-0001 to PR-4560) in plain HTML and CSS. Scroll and pick the one you like.</small></div>
+      <span class="meta">5 MB · 4,560 cards</span><span class="open">Open →</span>
+    </a>
+  </div>
+
+  <h2><span>04</span>Live shop sites</h2>
+  <p class="sub">Complete stores with catalogue, cart, checkout and admin.</p>
+  <div class="grid">
+    <a class="card" href="Anmol_Jewellers.html">
+      <div><span class="tag">Jewellery</span><b>Anmol Jewellers</b>
+      <small>66 products, three languages, WhatsApp orders, GST invoice, labels, coupons and the full admin panel.</small></div>
+      <span class="meta">Admin · admin@gmail.com / admin123</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Rabha_Cake_Shop.html">
+      <div><span class="tag new">Bakery</span><b>Rabha Cake Shop</b>
+      <small>Cakes with photos and ratings, cart, custom cake order with photo upload, search and the admin panel.</small></div>
+      <span class="meta">Admin · admin@gmail.com / admin123</span><span class="open">Open →</span>
+    </a>
+  </div>
+
+  <h2><span>05</span>Site builders</h2>
+  <p class="sub">Make a new shop site in one minute — type the name, add the logo, generate.</p>
+  <div class="grid">
+    <a class="card" href="Site_Builder.html">
+      <div><span class="tag">Jewellery</span><b>Jewellery Site Builder</b>
+      <small>Shop name, logo, phone and address — press generate and a complete jewellery website downloads.</small></div>
+      <span class="meta">2 MB · offline</span><span class="open">Open →</span>
+    </a>
+    <a class="card" href="Cake_Site_Builder.html">
+      <div><span class="tag">Bakery</span><b>Cake Site Builder</b>
+      <small>Same idea for a bakery — name, logo, phone, UPI and delivery fee, then generate the full cake site.</small></div>
+      <span class="meta">1 MB · offline</span><span class="open">Open →</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>All files are single HTML pages — nothing to install.</span>
+    <span>Admin logins: admin@gmail.com / admin123</span>
+  </footer>
+</div>
+</body>
+</html>
