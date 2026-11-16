@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Business demo — how your shop will look</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d0b12;--surface:#151119;--gold:#d4af37;--goldlt:#f0d68a;--champ:#f8ecd4;--dim:#a79c8f;--dim2:#7d7367;
+--line:rgba(212,175,55,.18);--soft:rgba(255,255,255,.07);--ease:cubic-bezier(.22,.8,.25,1);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+body{background:var(--bg);color:#f5f0e7;font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+radial-gradient(680px 460px at 78% -6%,rgba(212,175,55,.15),transparent 62%),
+radial-gradient(560px 420px at 8% 16%,rgba(226,167,171,.08),transparent 66%)}
+.wrap{position:relative;z-index:2}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1}
+.container{width:min(1040px,calc(100% - 32px));margin:0 auto}
+.eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+header.site{position:sticky;top:0;z-index:20;background:rgba(13,11,18,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--soft)}
+.head{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand-lock{display:flex;align-items:center;gap:9px}
+.logo-ph{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+font-size:7px;letter-spacing:.08em;color:var(--goldlt);background:radial-gradient(circle at 40% 35%,#2a2233,#151119)}
+.brand{font-family:var(--serif);font-size:15px;letter-spacing:.22em;color:var(--champ);text-transform:uppercase}
+.cart-btn{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:9.5px;letter-spacing:.12em;
+text-transform:uppercase;color:var(--goldlt);background:rgba(212,175,55,.08);font-family:inherit;cursor:pointer}
+.langsw{display:flex;gap:2px;border:1px solid var(--soft);border-radius:999px;padding:3px}
+.langsw span{font-size:9px;padding:3px 7px;border-radius:999px;color:var(--dim)}
+.langsw span.on{background:rgba(212,175,55,.2);color:var(--goldlt)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:14px 0 2px}
+.tab{padding:9px 16px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+cursor:pointer;border:1px solid var(--soft);color:var(--dim);background:transparent;font-family:inherit;transition:.3s}
+.tab:hover{color:var(--champ);border-color:var(--line)}
+.tab.on{background:rgba(212,175,55,.16);color:var(--goldlt);border-color:var(--line)}
+.view{display:none}.view.on{display:block;animation:fadeUp .55s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:10.5px;
+letter-spacing:.14em;text-transform:uppercase;transition:.4s var(--ease);font-family:inherit;cursor:pointer;border:0}
+.btn-gold{background:linear-gradient(115deg,#f2d98a,#d4af37 45%,#a9822a);color:#16110a;
+box-shadow:0 14px 32px -14px rgba(212,175,55,.9);position:relative;overflow:hidden}
+.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 62%);
+transform:translateX(-130%);transition:.7s}
+.btn-gold:hover::after{transform:translateX(130%)}
+.hero{padding:44px 0 34px}
+.hero-in{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+@media(min-width:820px){.hero-in{grid-template-columns:1.05fr .95fr}}
+.hero h1{font-size:clamp(30px,5vw,52px);color:var(--champ);margin-top:12px}
+.hero h1 em{font-style:italic;color:var(--goldlt)}
+.hero p{color:var(--dim);margin:14px 0 20px;font-size:14.5px;max-width:400px}
+.hero-visual{position:relative;display:grid;place-items:center;min-height:250px}
+.orb{position:absolute;width:min(290px,88%);aspect-ratio:1;border-radius:50%;border:1px solid rgba(212,175,55,.22);animation:spin 24s linear infinite}
+.orb:nth-child(2){width:min(215px,66%);border-style:dashed;border-color:rgba(226,167,171,.25);animation-duration:32s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-prod{position:relative;width:56%;aspect-ratio:1;border-radius:14px;display:grid;place-items:center;
+background:radial-gradient(circle at 50% 38%,#2a2233,#141019);border:1px solid var(--line);
+font-family:var(--serif);font-size:44px;color:rgba(240,214,138,.65);animation:float 7s ease-in-out infinite;
+box-shadow:0 30px 60px -30px #000}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.sec{padding:32px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:16px}
+.sec-head h2{font-size:clamp(22px,3.4vw,30px);color:var(--champ);margin-top:8px}
+.sec-head span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2)}
+.cats{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.cat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border:1px solid var(--soft);
+padding:6px 12px;border-radius:999px;transition:.3s;cursor:pointer}
+.cat:hover{color:var(--champ);border-color:var(--line)}
+.cat.on{background:rgba(212,175,55,.16);border-color:var(--line);color:var(--goldlt)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+.pcard{background:var(--surface);border:1px solid var(--soft);border-radius:12px;overflow:hidden;
+transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
+.pcard:hover{transform:translateY(-7px) scale(1.015);border-color:var(--line);box-shadow:0 26px 50px -28px #000}
+.pcard:hover .pimg{transform:scale(1.06)}
+.pimg{aspect-ratio:1/1;display:grid;place-items:center;font-family:var(--serif);font-size:36px;
+color:rgba(240,214,138,.7);background:radial-gradient(circle at 50% 38%,#241d2e,#141019);transition:transform .6s var(--ease)}
+.pbody{padding:11px 12px 13px}
+.pbody small{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2)}
+.pbody b{display:block;font-family:var(--serif);font-size:15px;color:var(--champ);font-weight:400;margin:2px 0 3px}
+.pbody span{display:block;font-size:12.5px;color:var(--goldlt);margin-bottom:8px}
+.pbody button{width:100%;padding:9px;border-radius:7px;border:1px solid var(--line);background:rgba(212,175,55,.1);
+color:var(--goldlt);font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:.3s}
+.pbody button:hover{background:rgba(212,175,55,.24)}
+/* auth */
+.auth{padding:40px 0;display:grid;place-items:center}
+.card{width:min(370px,100%);border:1px solid var(--line);border-radius:18px;padding:24px;
+background:linear-gradient(170deg,rgba(212,175,55,.1),rgba(255,255,255,.02));animation:fadeUp .6s var(--ease)}
+.card .logo-ph{margin:0 auto 12px;width:42px;height:42px}
+.card h2{font-size:21px;color:var(--champ);text-align:center}
+.card p{color:var(--dim2);font-size:12px;text-align:center;margin:4px 0 16px}
+.f{margin-bottom:11px}
+.f label{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);margin-bottom:5px}
+.f input{width:100%;padding:11px 12px;border:1px solid var(--soft);border-radius:8px;background:rgba(255,255,255,.04);
+font-family:inherit;font-size:13px;color:#f5f0e7;outline:none;transition:.3s}
+.f input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.14)}
+.card .btn{width:100%;justify-content:center;margin-top:6px}
+.hint{font-size:10.5px;color:var(--dim2);margin-top:10px;text-align:center}
+.hint a{color:var(--goldlt);cursor:pointer;border-bottom:1px dotted rgba(240,214,138,.5)}
+.step{display:none;animation:slideIn .5s var(--ease)}
+.step.on{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.otp-row{display:flex;gap:9px;justify-content:center;margin:16px 0 6px}
+.otp-row input{width:50px;height:54px;text-align:center;font-size:19px;border-radius:10px;
+border:1px solid var(--soft);background:rgba(255,255,255,.05);color:#fff;font-family:inherit;outline:none;transition:.3s}
+.otp-row input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.16)}
+.otp-row.done input{border-color:rgba(79,191,149,.7);background:rgba(79,191,149,.12);color:#7fe0bb}
+.otp-row.bad{animation:shake .45s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.msg{font-size:11px;text-align:center;color:#7fe0bb;margin-top:8px;min-height:16px;transition:.3s}
+/* admin */
+.admin{padding:22px 0 36px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px}
+@media(min-width:720px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{border:1px solid var(--soft);border-radius:10px;padding:11px;background:rgba(255,255,255,.03);transition:.4s}
+.kpi:hover{border-color:var(--line);background:rgba(212,175,55,.07)}
+.kpi small{display:block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2)}
+.kpi b{font-family:var(--serif);font-size:19px;color:var(--champ);font-weight:500}
+table{width:100%;border-collapse:collapse;font-size:11.5px;border:1px solid var(--soft);border-radius:10px;overflow:hidden}
+th{text-align:left;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);padding:9px;background:rgba(255,255,255,.04)}
+td{padding:9px;border-top:1px solid var(--soft);color:#e9e2d6}
+.pill{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:rgba(212,175,55,.16);color:var(--goldlt)}
+.pill.g{background:rgba(47,143,116,.18);color:#63c9a9}
+.pill.n{background:rgba(255,255,255,.07);color:var(--dim2)}
+footer.site{border-top:1px solid var(--soft);padding:18px 0;margin-top:14px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--dim2)}
+.flinks{display:flex;gap:13px;flex-wrap:wrap}
+.flinks a{transition:.3s}.flinks a:hover{color:var(--goldlt)}
+
+.admin-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.atab{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+border:1px solid var(--soft);color:var(--dim2);background:transparent;cursor:pointer;font-family:inherit;transition:.3s}
+.atab.on{background:rgba(212,175,55,.2);border-color:var(--line);color:var(--goldlt)}
+.apanel{display:none}.apanel.on{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="site"><div class="container head">
+  <div class="brand-lock"><div class="logo-ph">LOGO</div><div class="brand">NAME</div></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div class="langsw"><span class="on">EN</span><span>ગુ</span><span>हि</span></div>
+    <button class="cart-btn">Cart · 0</button>
+  </div>
+</div></header>
+<div class="container"><div class="tabs">
+  <button class="tab on" data-view="customer">Customer page</button>
+  <button class="tab" data-view="login">Login page</button>
+  <button class="tab" data-view="create">Create account</button>
+  <button class="tab" data-view="admin">Admin panel</button>
+</div></div>
+
+<div class="view on" id="view-customer">
+  <section class="hero"><div class="container hero-in">
+    <div>
+      <div class="eyebrow">Business layout · animated</div>
+      <h1>Your shop,<br><em>fully stocked.</em></h1>
+      <p>Floating hero product, three languages, trending row, coupons and a real payment gateway.</p>
+      <button class="btn btn-gold">Browse catalogue</button>
+    </div>
+    <div class="hero-visual"><div class="orb"></div><div class="orb"></div><div class="hero-prod">A</div></div>
+  </div></section>
+  <section class="sec"><div class="container">
+    <div class="cats"><span class="cat on">All</span><span class="cat">Category 1</span><span class="cat">Category 2</span><span class="cat">Category 3</span></div>
+    <div class="sec-head"><div><div class="eyebrow">Trending</div><h2>What everyone is buying</h2></div><span>6 designs</span></div>
+    <div class="grid"><article class="pcard"><div class="pimg">A</div><div class="pbody"><small>PRODUCT</small><b>Product A</b><span>₹ —</span><button>Add to cart</button></div></article><article class="pcard"><div class="pimg">B</div><div class="pbody"><small>PRODUCT</small><b>Product B</b><span>₹ —</span><button>Add to cart</button></div></article><article class="pcard"><div class="pimg">C</div><div class="pbody"><small>PRODUCT</small><b>Product C</b><span>₹ —</span><button>Add to cart</button></div></article><article class="pcard"><div class="pimg">D</div><div class="pbody"><small>PRODUCT</small><b>Product D</b><span>₹ —</span><button>Add to cart</button></div></article><article class="pcard"><div class="pimg">E</div><div class="pbody"><small>PRODUCT</small><b>Product E</b><span>₹ —</span><button>Add to cart</button></div></article><article class="pcard"><div class="pimg">F</div><div class="pbody"><small>PRODUCT</small><b>Product F</b><span>₹ —</span><button>Add to cart</button></div></article></div>
+  </div></section>
+</div>
+
+<div class="view" id="view-login">
+  <section class="auth"><div class="card">
+    <div class="logo-ph">LOGO</div>
+    <h2>Welcome back</h2><p>NAME · sign in to your account</p>
+    <div class="f"><label>Mobile number</label><input placeholder="98XXXXXXXX"></div>
+    <div class="f"><label>Password</label><input type="password" placeholder="••••••••"></div>
+    <button class="btn btn-gold" onclick="biz('create')">Sign in</button>
+    <div class="hint">New here? <a onclick="biz('create')">Create an account</a></div>
+  </div></section>
+</div>
+
+<div class="view" id="view-create">
+  <section class="auth"><div class="card">
+    <div class="logo-ph">LOGO</div>
+    <div class="step on" id="bCreate">
+      <h2>Create account</h2><p>We will send a 4-digit code to your number</p>
+      <div class="f"><label>Your name</label><input placeholder="Full name"></div>
+      <div class="f"><label>Mobile number</label><input placeholder="98XXXXXXXX"></div>
+      <div class="f"><label>Password</label><input type="password" placeholder="••••••••"></div>
+      <button class="btn btn-gold" onclick="bizOtp()">Send OTP</button>
+      <div class="hint">Already have an account? <a onclick="biz('login')">Sign in</a></div>
+    </div>
+    <div class="step" id="bOtp">
+      <h2>Verify OTP</h2><p>Enter the 4-digit code</p>
+      <div class="otp-row" id="bOtpRow">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+      </div>
+      <button class="btn btn-gold" onclick="bizVerify()">Verify</button>
+      <div class="msg" id="bMsg"></div>
+      <div class="hint">Didn't get it? <a onclick="bizOtp()">Resend</a></div>
+    </div>
+  </div></section>
+</div>
+
+<div class="view" id="view-admin">
+  <section class="admin"><div class="container"><div class="admin-tabs"><button class="atab on" data-panel="dash">Dashboard</button><button class="atab" data-panel="orders">Orders</button><button class="atab" data-panel="customers">Customers</button><button class="atab" data-panel="payments">Payments</button><button class="atab" data-panel="catalogue">Catalogue</button></div><div class="apanel on" data-panel="dash"><div class="kpis"><div class="kpi"><small>Orders</small><b>128</b></div><div class="kpi"><small>Revenue</small><b>₹96,400</b></div><div class="kpi"><small>Pending pay</small><b>3</b></div><div class="kpi"><small>Ready to ship</small><b>7</b></div></div><table><tr><th>Order</th><th>Customer</th><th>Amount</th><th>Status</th></tr><tr><td>#1042</td><td>Riddhi S</td><td>Ahmedabad</td><td>₹1,240</td></tr><tr><td>#1043</td><td>Priya N</td><td>Kochi</td><td>₹2,980</td></tr><tr><td>#1044</td><td>Sneha P</td><td>Surat</td><td>₹860</td></tr><tr><td>#1045</td><td>Aarti M</td><td>Indore</td><td>₹1,720</td></tr></table></div><div class="apanel" data-panel="orders"><table><tr><th>Order</th><th>Customer</th><th>City</th><th>Amount</th><th>Payment</th><th>Status</th></tr><tr><td>#1042</td><td>Riddhi S</td><td>Ahmedabad</td><td>₹1,240</td><td><span class="pill g">Paid</span></td><td><span class="pill g">Delivered</span></td><td>g</td></tr><tr><td>#1043</td><td>Priya N</td><td>Kochi</td><td>₹2,980</td><td><span class="pill ">Pending</span></td><td><span class="pill ">Ready to ship</span></td><td></td></tr><tr><td>#1044</td><td>Sneha P</td><td>Surat</td><td>₹860</td><td><span class="pill g">Paid</span></td><td><span class="pill ">Packed</span></td><td>g</td></tr><tr><td>#1045</td><td>Aarti M</td><td>Indore</td><td>₹1,720</td><td><span class="pill g">Paid</span></td><td><span class="pill n">New</span></td><td>g</td></tr><tr><td>#1046</td><td>Kavita R</td><td>Jaipur</td><td>₹3,410</td><td><span class="pill ">Pending</span></td><td><span class="pill n">New</span></td><td>n</td></tr></table></div><div class="apanel" data-panel="customers"><table><tr><th>Name</th><th>Mobile</th><th>Orders</th><th>Spent</th><th>Last order</th></tr><tr><td>Riddhi S</td><td>98XXXXXX21</td><td>6 orders</td><td>₹14,260</td><td>12 Oct</td></tr><tr><td>Priya N</td><td>97XXXXXX48</td><td>3 orders</td><td>₹6,180</td><td>28 Sep</td></tr><tr><td>Sneha P</td><td>99XXXXXX10</td><td>11 orders</td><td>₹28,940</td><td>02 Oct</td></tr><tr><td>Aarti M</td><td>90XXXXXX77</td><td>1 order</td><td>₹1,720</td><td>09 Oct</td></tr></table></div><div class="apanel" data-panel="payments"><table><tr><th>Order</th><th>Method</th><th>Reference</th><th>Amount</th><th>Status</th></tr><tr><td>#1043</td><td>UPI QR</td><td>UTR 4482 9931</td><td>₹2,980</td><td><span class="pill ">Pending</span></td></tr><tr><td>#1045</td><td>Razorpay</td><td>pay_RX81K2</td><td>₹1,720</td><td><span class="pill g">Verified</span></td></tr><tr><td>#1046</td><td>UPI QR</td><td>UTR 7710 2288</td><td>₹3,410</td><td><span class="pill ">Pending</span></td></tr></table></div><div class="apanel" data-panel="catalogue"><table><tr><th>Code</th><th>Product</th><th>Category</th><th>Price</th><th>Stock</th></tr><tr><td>AX-01</td><td>Product A</td><td>Earrings</td><td>₹349</td><td>24</td></tr><tr><td>AX-02</td><td>Product B</td><td>Necklace</td><td>₹499</td><td>8</td></tr><tr><td>AX-03</td><td>Product C</td><td>Gift box</td><td>₹899</td><td>0</td></tr><tr><td>AX-04</td><td>Product D</td><td>Combo</td><td>₹749</td><td>15</td></tr></table></div></div></section>
+</div>
+
+<footer class="site"><div class="container foot">
+  <span>NAME · Business package demo</span>
+  <div class="flinks"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">Contact</a></div>
+</div></footer>
+</div>
+
+<script>
+function biz(v){
+  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on');});
+  document.getElementById('view-'+v).classList.add('on');
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on', t.dataset.view===v);});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){biz(t.dataset.view);});});
+function bizOtp(){
+  document.getElementById('bCreate').classList.remove('on');
+  document.getElementById('bOtp').classList.add('on');
+  var first=document.querySelector('#bOtpRow input'); if(first) first.focus();
+}
+var bo=[].slice.call(document.querySelectorAll('#bOtpRow input'));
+bo.forEach(function(b,i){b.addEventListener('input',function(){
+  b.value=b.value.replace(/\D/g,''); if(b.value&&bo[i+1]) bo[i+1].focus();});});
+function bizVerify(){
+  var row=document.getElementById('bOtpRow'), msg=document.getElementById('bMsg');
+  var code=bo.map(function(b){return b.value;}).join('');
+  if(code.length<4){ row.classList.add('bad'); setTimeout(function(){row.classList.remove('bad');},500);
+    msg.textContent='Enter all 4 digits'; msg.style.color='#e2a7ab'; return; }
+  row.classList.add('done'); msg.textContent='Verified ✓ Welcome!'; msg.style.color='#7fe0bb';
+}
+</script>
+<script>
+document.querySelectorAll('.atab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.atab').forEach(function(x){x.classList.remove('on');});
+    t.classList.add('on');
+    document.querySelectorAll('.apanel').forEach(function(p){
+      p.classList.toggle('on', p.dataset.panel===t.dataset.panel);
+    });
+  });
+});
+</script></body></html>
