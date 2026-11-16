@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Starter demo — how your shop will look</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1c1a17;--muted:#6b645c;--line:#e4ded4;--bg:#fbf9f5;--accent:#8a6a3a;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+.wrap{width:min(1000px,calc(100% - 32px));margin:0 auto}
+header.site{border-bottom:1px solid var(--line);background:#fff}
+.head{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand-lock{display:flex;align-items:center;gap:10px}
+.logo-ph{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+font-size:7px;letter-spacing:.08em;color:var(--muted);background:#f4efe7}
+.brand{font-family:var(--serif);font-size:16px;letter-spacing:.22em;text-transform:uppercase}
+.cart-btn{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:10px;letter-spacing:.1em;
+text-transform:uppercase;background:#fff}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:14px 0 2px}
+.tab{padding:9px 16px;border-radius:6px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+cursor:pointer;border:1px solid var(--line);color:var(--muted);background:#fff;font-family:inherit}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.view{display:none}.view.on{display:block}
+.hero{padding:38px 0 30px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(26px,4.6vw,42px)}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{color:var(--muted);margin:12px 0 18px;font-size:14px;max-width:400px}
+.btn{display:inline-block;padding:11px 22px;border-radius:6px;font-size:11px;letter-spacing:.12em;
+text-transform:uppercase;background:var(--ink);color:#fff;border:1px solid var(--ink);cursor:pointer;font-family:inherit}
+.btn-o{background:#fff;color:var(--ink)}
+.sec{padding:30px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
+.sec-head h2{font-size:22px}
+.sec-head span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pimg{aspect-ratio:1/1;background:#efe9df;display:grid;place-items:center;font-family:var(--serif);font-size:34px;color:#c9bda9}
+.pbody{padding:10px}
+.pbody b{display:block;font-size:12px;font-weight:500}
+.pbody span{display:block;font-size:12px;color:var(--accent);margin:2px 0 7px}
+.pbody button{width:100%;padding:8px;border:1px solid var(--line);background:#fff;border-radius:5px;
+font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.auth{padding:38px 0;display:grid;place-items:center}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px;width:min(340px,100%)}
+.card h2{font-size:20px;margin-bottom:3px}
+.card p{color:var(--muted);font-size:12px;margin-bottom:16px}
+.f{margin-bottom:11px}
+.f label{display:block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.f input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:6px;background:#fdfcfa;
+font-family:inherit;font-size:13px;color:var(--ink);outline:none}
+.f input:focus{border-color:var(--accent)}
+.card .btn{width:100%;text-align:center;margin-top:4px}
+.hint{font-size:11px;color:var(--muted);margin-top:10px;text-align:center}
+.hint a{cursor:pointer;text-decoration:underline}
+.admin{padding:24px 0 36px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px}
+.kpi small{display:block;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi b{font-family:var(--serif);font-size:19px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:12px}
+th{text-align:left;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+padding:9px;background:#f7f4ef;border-bottom:1px solid var(--line)}
+td{padding:9px;border-bottom:1px solid #f1ece4}
+.pill{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#efe9df;color:#6b645c}
+.pill.g{background:#e6f0e9;color:#3f7357}
+footer.site{border-top:1px solid var(--line);padding:18px 0;background:#fff;margin-top:16px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+.flinks{display:flex;gap:12px;flex-wrap:wrap}
+.flinks a:hover{color:var(--accent);text-decoration:underline}
+
+.admin-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.atab{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:6px;
+border:1px solid var(--line);color:var(--muted);background:#fff;cursor:pointer;font-family:inherit}
+.atab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.apanel{display:none}.apanel.on{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="site"><div class="head">
+  <div class="brand-lock"><div class="logo-ph">LOGO</div><div class="brand">NAME</div></div>
+  <button class="cart-btn">Cart · 0</button>
+</div></header>
+<div class="tabs">
+  <button class="tab on" data-view="customer">Customer page</button>
+  <button class="tab" data-view="login">Login page</button>
+  <button class="tab" data-view="create">Create account</button>
+  <button class="tab" data-view="admin">Admin panel</button>
+</div>
+
+<div class="view on" id="view-customer">
+  <section class="hero"><div class="wrap">
+    <h1>Your shop,<br><em>online.</em></h1>
+    <p>A plain, fast page that shows your products with prices and takes the order on WhatsApp or by cart.</p>
+    <a class="btn" href="#">Browse catalogue</a>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><h2>Products</h2><span>6 designs</span></div>
+    <div class="grid"><article class="pcard"><div class="pimg">A</div><div class="pbody"><b>Product A</b><span>₹ —</span><button>Add</button></div></article><article class="pcard"><div class="pimg">B</div><div class="pbody"><b>Product B</b><span>₹ —</span><button>Add</button></div></article><article class="pcard"><div class="pimg">C</div><div class="pbody"><b>Product C</b><span>₹ —</span><button>Add</button></div></article><article class="pcard"><div class="pimg">D</div><div class="pbody"><b>Product D</b><span>₹ —</span><button>Add</button></div></article><article class="pcard"><div class="pimg">E</div><div class="pbody"><b>Product E</b><span>₹ —</span><button>Add</button></div></article><article class="pcard"><div class="pimg">F</div><div class="pbody"><b>Product F</b><span>₹ —</span><button>Add</button></div></article></div>
+  </div></section>
+</div>
+
+<div class="view" id="view-login">
+  <section class="auth"><div class="card">
+    <div class="logo-ph" style="margin:0 auto 10px">LOGO</div>
+    <h2>Sign in</h2><p>NAME · customer account</p>
+    <div class="f"><label>Mobile number</label><input placeholder="98XXXXXXXX"></div>
+    <div class="f"><label>Password</label><input type="password" placeholder="••••••••"></div>
+    <button class="btn">Sign in</button>
+    <div class="hint">New here? <a onclick="go('create')">Create an account</a></div>
+  </div></section>
+</div>
+
+<div class="view" id="view-create">
+  <section class="auth"><div class="card">
+    <div class="logo-ph" style="margin:0 auto 10px">LOGO</div>
+    <h2>Create account</h2><p>Simple form — no OTP in this package</p>
+    <div class="f"><label>Your name</label><input placeholder="Full name"></div>
+    <div class="f"><label>Mobile number</label><input placeholder="98XXXXXXXX"></div>
+    <div class="f"><label>Password</label><input type="password" placeholder="••••••••"></div>
+    <button class="btn">Create account</button>
+    <div class="hint">Already have an account? <a onclick="go('login')">Sign in</a></div>
+  </div></section>
+</div>
+
+<div class="view" id="view-admin">
+  <section class="admin"><div class="container"><div class="admin-tabs"><button class="atab on" data-panel="orders">Orders</button><button class="atab" data-panel="packing">Packing</button><button class="atab" data-panel="stock">Inventory</button></div><div class="apanel on" data-panel="orders"><table><tr><th>Order</th><th>Customer</th><th>Status</th></tr><tr><td>#1042</td><td>Riddhi S</td><td>Ahmedabad</td></tr><tr><td>#1043</td><td>Priya N</td><td>Kochi</td></tr><tr><td>#1044</td><td>Sneha P</td><td>Surat</td></tr><tr><td>#1045</td><td>Aarti M</td><td>Indore</td></tr></table></div><div class="apanel" data-panel="packing"><table><tr><th>Order</th><th>Customer</th><th>Status</th></tr><tr><td>#1044</td><td>Sneha P</td><td><span class="pill ">Packed</span></td></tr><tr><td>#1042</td><td>Riddhi S</td><td><span class="pill g">Delivered</span></td></tr></table></div><div class="apanel" data-panel="stock"><table><tr><th>Code</th><th>Product</th><th>Stock</th></tr><tr><td>AX-01</td><td>Product A</td><td>Earrings</td></tr><tr><td>AX-02</td><td>Product B</td><td>Necklace</td></tr><tr><td>AX-03</td><td>Product C</td><td>Gift box</td></tr><tr><td>AX-04</td><td>Product D</td><td>Combo</td></tr></table></div></div></section>
+</div>
+
+<footer class="site"><div class="wrap foot">
+  <span>NAME · Starter package demo</span>
+  <div class="flinks"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">Contact</a></div>
+</div></footer>
+</div>
+
+<script>
+function go(v){
+  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on');});
+  document.getElementById('view-'+v).classList.add('on');
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on', t.dataset.view===v);});
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){go(t.dataset.view);});});
+</script>
+<script>
+document.querySelectorAll('.atab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.atab').forEach(function(x){x.classList.remove('on');});
+    t.classList.add('on');
+    document.querySelectorAll('.apanel').forEach(function(p){
+      p.classList.toggle('on', p.dataset.panel===t.dataset.panel);
+    });
+  });
+});
+</script></body></html>
